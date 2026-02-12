@@ -8,16 +8,15 @@ ENV SCRIPTS=/opt/dataproducten
 
 # Install required packages
 RUN apk add --no-cache \
-    vim=9.1.1942-r0 \
+    vim=9.1.2132-r0 \
     bash=5.3.3-r1 \
     bc=1.08.2-r0 \
     git=2.52.0-r0 \
     nodejs=24.13.0-r1 \
     npm=11.6.3-r0 \
-    uv=0.9.26-r0 \
+    uv=0.10.2-r0 \
     just==1.43.1-r0 \
-    github-cli=2.83.0-r2
-    # poetry=2.2.1-r0
+    github-cli=2.83.0-r3
 
 # Install Python project dependencies
 RUN uv pip install --system \
