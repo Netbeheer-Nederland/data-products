@@ -1,0 +1,466 @@
+= For Modelers
+
+All data product schemas are expressed in the LinkML data modeling language, which is particularly suited for the modeling of data exchange in a decentral architecture.
+
+For each version of a LinkML schema a YAML and HTML representation is available, where the YAML representation is canonical.
+
+Any semantics or constraints expressed beyond the capabilities of LinkML are deemed _informative_. This applies in particular to additional descriptions in the HTML or YAML `description` keys.
+
+'''
+
+// .Conceptual model of a schema, its versions and its representations (by example)
+// [d2]
+// ....
+// direction: down
+//
+// classes: {
+//     item: {
+//         shape: rectangle
+//         style {
+//             fill: "#f3f7f9"
+//             stroke-width: 1
+//         }
+//     }
+//
+// }
+//
+// capaciteitskaart: |md
+//   # Capaciteitskaart
+//   `/capaciteitskaart`
+//
+// | {
+//   class: item
+// }
+// capaciteitskaart2-0: |md
+//   ## Capaciteitskaart 2.0
+//   `/capaciteitskaart/2.0`
+// | {
+//   class: item
+// }
+//
+// capaciteitskaart1-1: |md
+//   ## Capaciteitskaart 1.1
+//   `/capaciteitskaart/1.1`
+// | {
+//   class: item
+// }
+//
+// capaciteitskaart -> capaciteitskaart2-0: "has version"
+// capaciteitskaart -> capaciteitskaart1-1: "has version"
+//
+// linkml: |md
+//   ### LinkML/YAML
+//   machine-processable
+// | {
+//   class: item
+// }
+//
+// html: |md
+//   ### HTML
+//   human-readable
+// | {
+//   class: item
+// }
+//
+// capaciteitskaart2-0 -> linkml: "has representation"
+// capaciteitskaart2-0 -> html: "has representation"
+// ....
+
+.Conceptual model of a schema, its versions and its representations
+[d2]
+....
+vars: {
+    d2-config: {
+        pad: 25
+        theme-id: 5
+    }
+}
+direction: down
+
+classes: {
+    item: {
+        width: 250
+        height: 80
+        shape: rectangle
+        style {
+            stroke-width: 1
+        }
+    }
+
+}
+
+schema: |md
+  ### LinkML schema
+| {
+  class: item
+}
+schema_version: |md
+  ### LinkML schema version
+| {
+  class: item
+}
+
+schema -> schema_version: "has versions"
+
+linkml: |md
+  ### YAML
+| {
+  class: item
+}
+
+html: |md
+  ### HTML
+| {
+  class: item
+}
+
+schema_version -> linkml: "has machine-processable\nrepresentation"
+schema_version -> html: "has human-readable\nrepresentation"
+....
+
+// [d2]
+// ....
+// vars: {
+//     d2-config: {
+//         pad: 20
+//         layout-engine: elk
+//     }
+// }
+//
+// grid-rows: 3
+// vertical-gap: 75
+//
+// schema: |md # Schema | {
+//     shape: rectangle
+//     class: item
+// }
+// schema-version: "Schema version" {
+//     linkml: "YAML"
+//     html: "HTML"
+// }
+// source-files: |md
+// ## Source files
+// | {
+//     shape: rectangle
+//     class: item
+// }
+//
+// schema-version -> schema: "version of"
+// source-files <- schema-version: "built from"
+// ....
+
+== Identification
+
+Each schema and schema version is identified by a URI:
+
+.URI templates for schema and schema versions
+[cols="h,1"]
+|===
+| Schema
+| `\https://modellen.netbeheernederland.nl/\{name}`
+| Schema version
+| `\https://modellen.netbeheernederland.nl/\{name}/\{version}`
+|===
+
+where:
+
+[horizontal,labelwidth=30]
+`name`:: name of the data product or schema
+`version`:: <<_version_identifier,version identifier>> of the schema version
+
+=== Version identifier
+
+A _version identifier_ is a string that disambiguates one version of a schema from another.
+
+Version identifiers can be _dynamic_ (e.g. `latest` and `test`), or _static_ (e.g. `1.0` and `2.1.1-rc3`). We use dynamic identifiers to easily identify versions in a `draft` or `accepted` life cycle state, and static identifiers for releases.
+
+.Version identifiers
+[cols="2,4,1"]
+|===
+| Version identifier | Definition | Kind
+
+| `draft`
+| latestfootnote:[Technically, each subsequent draft version is another commit in `draft` branch of the Git repository. All of these commits are draft versions, but only the last can be identified and accessed through this dynamic version identifier.] <<state-draft,draft version>>
+| dynamic
+
+| `upcoming`
+| latest <<state-accepted,accepted version>>
+| dynamic
+
+| `MAJOR.MINOR`
+| specific <<state-released,released>> or <<state-retired,retired>> version
+| static
+|===
+
+==== Major and minor versions
+
+Releases have an identifier of the form `MAJOR.MINOR`, which are non-negative integers which encode compatibility information.
+
+* `MAJOR` is incremented if existing data no longer validates against the model (_breaking changes occurred_).
+* `MINOR` is incremented otherwise (_non-breaking changes occurred_).
+
+NOTE: We work with only one draft branch, so the identifier `draft` is not ambiguous.
+
+== Life cycle
+
+=== Schema
+
+The life cycle of a schema is, naturally, intimately related to the life cycle of the associated data product. With the birth of a new data product, a new schema is required as well. Similarly, if a data product is retired, so is its schema.
+
+We discern the following possible states during the life cycle of a schema:
+
+.Schema life cycle
+[d2]
+....
+vars: {
+    d2-config: {
+        pad: 25
+        theme-id: 5
+    }
+}
+direction: right
+start: {
+    style: {
+        double-border: true
+    }
+}
+
+start -> active
+active -> retired
+retired -> end
+
+end: {
+    style: {
+        double-border: true
+    }
+}
+
+*: {
+    shape: circle
+    width: 100
+    height: 100
+    style.stroke-width: 1
+}
+....
+
+The possible states are defined as follows:
+
+// [horizontal,labelwidth=10]
+active:: in use by a data product
+retired:: no longer supported
+
+=== Schema version
+
+The life cycle of a version of the schema is described by the following state diagram:
+
+.Schema version life cycle
+[d2,svg]
+----
+vars: {
+    d2-config: {
+        pad: 25
+        theme-id: 5
+    }
+}
+direction: right
+
+classes: {
+  state: {
+    width: 100
+    height: 100
+    shape: oval
+  }
+}
+
+*.class: state
+start.style {
+  double-border: true
+  border-radius: 50
+}
+end.style {
+  double-border: true
+  border-radius: 50
+}
+
+start -> draft
+draft -> accepted
+accepted -> released
+released -> retired
+retired -> end
+----
+
+The possible states are defined as follows:
+
+// [horizontal,labelwidth=10]
+[[state-draft]]draft:: under (active) development
+[[state-accepted]]accepted:: at some point in time accepted to have its changes be an anticipated part of the upcoming release
+[[state-released]]released:: stable and ready to be used by end-users
+[[state-retired]]retired:: once released, but no longer supported
+
+== Representations
+
+Schemas are merely conceptual, abstract resources. Only schema _versions_ have representations.
+
+Currently, the following representations are built for a version:
+
+.Schema version representations
+|===
+| Media type | For humans or machines | Canonical
+
+| YAML (`application/yaml`)
+| machine
+| yes
+
+| HTML (`text/html`)
+| human
+| no
+|===
+
+=== YAML
+
+The YAML representation of a schema version is intended for processing by machines, and is the canonical representation of the schema. Typical use includes data parsing and validation.
+
+=== HTML
+
+The HTML representation of a schema version is suited for humans. It contains:
+
+* reference documentation generated from the schema
+* additional informative documentation, (usually) written by humans
+
+NOTE: The machine-processable schema representation can be obtained from the documentation site.
+
+The documentation site is generated by the Antora framework, based on source files written primarily in AsciiDoc. These are battle-tested tools for writing technical documentation with great multi-project support.
+
+=== Supporting artifacts
+
+Schema versions may have additional artifacts included. Typically, these are supporting resources such as example data, additional generated schemas (e.g. JSON Schema, SHACL, etc.) or additional documents.
+
+Supporting artifacts are informative.
+
+Every representation of the schema version should provide hyperlinks to these artifacts.
+
+The following artifacts are included by default:
+
+.Artifacts included with schema versions by default
+|===
+| Kind | Representation technique | Media type | For humans or machines
+
+.2+| Example data
+| LinkML
+| YAML
+.2+a|
+[unstyled]
+* human
+* machine
+
+| JSON Schema
+| JSON
+
+|===
+
+Additional artifacts can be attached to a schema version, as specified in the LinkML YAML file of the schema.
+
+==== Retrieval
+
+Retrieving the HTML representation of a schema version can be achieved simply by dereferencing its URI.
+
+The YAML representation can be obtained from the documentation site, or by dereferencing the URI with `/yaml` appended.footnote:[Standard practice would be to implement content-negotiation, but this has not been implemented  at this time.]
+
+In summary:
+
+.URLs for schema version representation retrieval
+|===
+| Media type | URI
+
+| HTML
+| `\https://modellen.netbeheernederland.nl/\{name}/\{version}`
+
+| YAML
+| `\https://modellen.netbeheernederland.nl/\{name}/\{version}/yaml`
+
+|===
+
+
+
+== Source
+
+[d2]
+....
+vars: {
+    d2-config: {
+        pad: 25
+        theme-id: 5
+    }
+}
+direction: down
+
+source: "Source files" {
+    adoc: "AsciiDoc" {
+        width: 100
+    }
+    yaml: "YAML" {
+        width: 100
+    }
+    near: bottom-center
+    label.near: outside-bottom-center
+}
+built: "Built files" {
+    html: "HTML" {
+        width: 100
+    }
+    yaml: "YAML" {
+        width: 100
+    }
+}
+
+source.yaml -> built.yaml: "builds"
+source.yaml -> built.html: "builds"
+source.adoc -> built.html: "builds"
+....
+
+For every data model a dedicated Git repository exists where its source files are managed, and the source files of each model version are stored in commits.
+
+=== Representation
+
+|===
+| Thing | Language | Syntax
+
+| Schema
+| LinkML
+| YAML
+
+| Documentation
+| Antora
+| AsciiDoc
+
+| Example data
+| LinkML
+| YAML
+|===
+
+=== Version organization
+
+// [horizontal]
+`draft` branch:: contains commits of <<state-draft,draft versions>>
+`main` branch:: contains commits of <<state-accepted,accepted versions>>
+`X.Y` tag:: points to the specific commit of the <<state-released,released version>> identified by `X.Y`
+`retired` tag:: points to the specific commit of a <<state-retired,retired version>>
+
+.Version of built vs source
+[NOTE]
+--
+When referring to a version of the data model, we always refer to the built version, not the source version.
+
+To refer specifically to the source files of a data model version, this should be explicitly qualified, e.g. "the source files of data model version 1.2".
+--
+
+
+
+== Process
+=== Schema
+==== Create
+==== Retire
+=== Schema version
+==== Create or work on
+==== Release
+==== Retire

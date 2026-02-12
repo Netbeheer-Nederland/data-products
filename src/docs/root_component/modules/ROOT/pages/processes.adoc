@@ -1,0 +1,236 @@
+= Processes
+
+== Working on the upcoming release
+
+.Process of working on the upcoming release
+[d2]
+....
+vars: {
+  d2-config: {
+    theme-id: 5
+  }
+}
+direction: right
+start: "Start" {
+  style.border-radius: 50
+  style.double-border: true
+}
+make: "Make changes" {
+  shape: rectangle
+}
+propose: "Propose changes" {
+  shape: rectangle
+}
+review: "Review changes" {
+  shape: rectangle
+}
+reviewResult: "Changes approved?" {
+  shape: diamond
+}
+accept: "Accept changes" {
+  shape: rectangle
+}
+end: "End" {
+  style.border-radius: 50
+  style.double-border: true
+}
+
+start -> make
+make -> propose
+propose -> review
+review -> reviewResult
+reviewResult -> make: "rejected"
+reviewResult -> accept: "approved"
+accept -> end
+....
+
+Upon reaching the end of this process, the model version wil transition from the _draft_ to the _accepted_ state.
+
+=== Make changes
+
+Any changes are made and committed and pushed to the `draft` branch.
+
+For learning more about how to develop the data model, read: xref::TODO[#TODO#].
+
+=== Propose changes
+
+When changes are finished, they should be proposed to become accepted for the upcoming release.
+
+To achieve this, a pull request is created -- if this was not already done -- so a review can be carried out by peers. 
+
+=== Review changes
+
+At least one other modeler must review the changes made, and submit whether they accept or reject these changes.
+
+* If the changes are accepted, follow the <<_accept_changes>> step.
+* If the changes are rejected, return to the <<_make_changes>> step.
+
+=== Accept changes
+
+If the changes are accepted, the `draft` branch should be merged onto the `main` branch, thereby effectuating accepted changes.
+
+In case the resulting version on the `main` branch is desired to be released, please consult the <<release>> process.
+
+[#release]
+== Releasing a version
+
+.Process: releasing a new version
+[d2]
+....
+vars: {
+  d2-config: {
+    theme-id: 5
+  }
+}
+direction: right
+start: "Start" {
+  style.border-radius: 50
+  style.double-border: true
+}
+test: "Test prerelease" {
+  shape: rectangle
+}
+testResult: "Test successful?" {
+  shape: diamond
+}
+designateRelease: "Designate release" {
+  shape: rectangle
+}
+publish: "Publish release" {
+  shape: rectangle
+}
+communicate: "Communicate release" {
+  shape: rectangle
+}
+workOnRelease: "Work on upcoming release" {
+  shape: rectangle
+  style.double-border: true
+}
+end: "End" {
+  style.border-radius: 50
+  style.double-border: true
+}
+
+start -> test
+test -> testResult
+testResult -> designateRelease: "success"
+testResult -> workOnRelease: "failure"
+designateRelease -> publish
+publish -> communicate
+communicate -> end
+workOnRelease -> end
+....
+
+When the end of this process is reached, the model version wil transition from the _accepted_ to the _released_ state.
+
+=== Test prerelease
+
+To make sure no bugs or undesired changes have crept in, before releasing a version it must first be tested.
+
+* If the test is successful: <<_designate_release>>.
+* If not, make the necessary changes by following the <<_working_on_the_upcoming_release>> process.
+
+=== Designate release
+
+If the test is successful, the version gets designated a new version identifier for the release. See xref::newest.adoc#_version_identifier[Version identifier] on how to determine this.
+
+Then, the commit is tagged with the new release version identifier.
+
+=== Publish release
+
+A build process is started to make the released version available under its new version identifier.
+
+=== Communicate release
+
+Now that the new release is published, it can be communicated stakeholders.
+
+
+// == Process
+
+// All development on the data model is done on the `next` branch, which is the dedicated branch for working on the next release.
+
+// When work is done, a pull request should be made for merging the changes to the `main` branch. Then, a review procedure takes place. If the changes are approved, the changes are merged into `main`. Otherwise, further work is needed and this develop-review cycle repeats as often as is necessary before changes are finally approved and merged.
+
+// When a new version is released, the latest commit on the `main` branch is tagged with the appropriate next version identifier `MAJOR.MINOR`, where:
+
+// `MAJOR`:: the _major version_ is incremented when changes are made which cause existing data to no longer validate against the model (_breaking change_).
+// `MINOR`:: if changes do not warrant a major version increment, the _minor_ version is incremented (_non-breaking change_).
+
+// CAUTION: No commits should be done on the `main` branch directly. This way, every change has to go through review through a pull request, ensuring no changes end up in releases without proper review.
+
+// This cycle repeats: new work is done on the `next` branch, which should be reviewed and merged to `main` through a pull request. After some iterations of work, a release is created, resulting in a tag.
+
+// NOTE: Evolution is strictly linear. Never will earlier major versions be patched for example.
+
+
+// Het *datamodel* is onder versiebeheer
+//
+//
+//
+// Het *datamodel* en de documentatie en voorbeelddata daarvan zijn onder versiebeheer, en verder is niets dat.
+//
+// Gegenereerde artefacten zoals de documentatiewebsite en uitingen van het datamodel in andere talen zoals JSON Schema en SHACL zijn geen onderdeel van de versie, enkel beschikbaar gestelde bijvoegingen.
+
+// .Git-repository
+// ====
+// [source]
+// ....
+// documentation/ <1>
+//     antora.yml
+//     modules/
+//         ROOT/
+// examples/ <2>
+//     capaciteitskaart_dso.example.yml
+//     capaciteitskaart_tso.example.yml
+// model/ <3>
+//     capaciteitskaart.linkml.yml
+// output/
+// LICENSE <4>
+// README.adoc <5>
+// ....
+// <1> Documentatie voor het datamodel geschreven door een modelleur.
+// <2> Voorbeelddata die conformeert aan het datamodel.
+// <3> Het datamodel zelf.
+// ====
+
+
+// NOTE: The `draft` branch is a protected branch and is never deleted. Since by definition it is never behind any other branch this is easy to guarantee.
+
+// A new release can be made simply by creating a new tag for the latest commit on the `main` branch. The name of this tag is equal to the version identifier (`MAJOR.MINOR`), which depending on the impact of the changes is a new major or minor version.
+
+
+// == What does a version constitute of
+//
+//
+// Difference between _source_ and what is under version control, and _release_ and what is part of a release (potentially including artifacts)
+//
+// * data model
+// * documentation
+// * example data conforming to the data model
+//
+// The only thing actually getitng a version is the data model conceptually, which is the whole Git commit.
+
+
+
+// === Recording
+
+// * LinkML schema (leading)
+// ** documentation
+// ** Git tag
+
+// == Versioning scheme
+//
+// Every data model release has a unique version indicator of the form `MAJOR.MINOR`{fn-1}.
+//
+// Increment:
+//
+// . `MAJOR` if existing data no longer validates against the model (_breaking change_).{fn-2}
+// . `MINOR` otherwise (_non-breaking change_).
+
+// == Recording
+//
+// * `version` attribute of the LinkML schema
+// * `version` attribute of the Antora component version descriptor (`antora.yml`)
+// * new Git tag
+//
+// TIP: Users do not have to manage these version indicators themselves. This is automated for them through the use of the development environment.

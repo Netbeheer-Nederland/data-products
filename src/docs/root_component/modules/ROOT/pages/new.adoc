@@ -1,0 +1,210 @@
+= Data Models
+:page-toclevels: 1
+
+We create _data models_ for data products coordinated by Netbeheer Nederland.
+
+// #TODO#: Standard instead of data model?
+
+== Definitions
+
+data model::
+  model which provides a concrete view on a system or information exchange, describing the structure, content, and semantics of data
+data model version::
+  information resource which represents an implementation of the data model
+
+== Representation
+
+Data models are merely conceptual, abstract resources. Only data model _versions_ have representations.
+
+Each _data model version_ is an information resource with both _machine-processable and human-readable representations_:
+
+.Data model version representations
+|===
+| Kind | Language | Syntax | User type
+
+| Schema
+| LinkML
+| YAML
+| machine
+
+| Web documentation
+| Antora/HTML
+| HTML
+| human
+|===
+
+=== Artifacts
+
+Each of these representations may provide hyperlinks to _supporting artifacts_ such as example data, generated schemas (JSON Schema, SHACL, etc.) or additional documents.
+
+The following artifacts are included with all versions:
+
+.Artifacts guaranteed to be included with every data model version
+|===
+| Kind | Language | Syntax | User type
+
+.2+| Example data
+| LinkML
+| YAML
+.2+a|
+[unstyled]
+* human
+* machine
+
+| JSON Schema
+| JSON
+|===
+
+== Life cycle
+
+The life cycle of a data model version is aptly described by the following state diagram:
+
+.State diagram of a data model version
+[d2,svg]
+----
+direction: right
+
+classes: {
+  state: {
+    width: 100
+    height: 100
+    shape: circle
+  }
+}
+
+*.class: state
+start.style {
+  double-border: true
+  border-radius: 50
+}
+end.style {
+  double-border: true
+  border-radius: 50
+}
+
+start -> draft
+draft -> accepted
+accepted -> released
+released -> retired
+retired -> end
+----
+
+The possible states are defined as follows:
+
+[horizontal,labelwidth=10]
+[[state-draft]]draft:: under (active) development
+[[state-accepted]]accepted:: at some point in time accepted to have its changes be an anticipated part of the upcoming release
+[[state-released]]released:: stable and ready to be used by end-users
+[[state-retired]]retired:: once released, but no longer supported
+
+Each of these states comes with certain commitments and guarantees.
+
+== Identification
+
+The data model can be identified by its URI.
+
+A version of the data model is indicated by its _version identifier_:
+
+[horizontal]
+`draft`:: latest revision of <<state-draft,draft version>>
+`upcoming`:: latest revision of <<state-accepted,accepted version>>
+`X.Y`:: specific <<state-releaed,released>> or <<state-retired,retired>> version
+
+NOTE: The identifier `draft` can only unambiguously identify the latest <<state-draft>> version if only one draft exists.
+
+The data model version, then, can also be identified by its _URI_, which includes the version identifier.
+
+// Dereferencing the URI provides the representations of the model.
+
+== Source files
+
+For every data model a dedicated Git repository exists where its source files are managed, and the source files of each model version are stored in commits.
+
+=== Representation
+
+|===
+| Thing | Language | Syntax
+
+| Schema
+| LinkML
+| YAML
+
+| Documentation
+| Antora
+| AsciiDoc
+
+| Example data
+| LinkML
+| YAML
+|===
+
+=== Version organization
+
+[horizontal]
+`draft` branch:: contains commits of <<state-draft,draft versions>>
+`main` branch:: contains commits of <<state-accepted,accepted versions>>
+`X.Y` tag:: points to the specific commit of the <<state-released,released version>> identified by `X.Y` 
+`retired` tag:: points to the specific commit of a <<state-retired,retired version>>
+
+.Version of built vs source
+[NOTE]
+--
+When referring to a version of the data model, we always refer to the built version, not the source version.
+
+To refer specifically to the source files of a data model version, this should be explicitly qualified, e.g. "the source files of data model version 1.2".
+--
+
+// [mermaid,svg]
+// ....
+// ---
+// config:
+//   theme: neutral
+//   class:
+//     hideEmptyMembersBox: true
+// ---
+// classDiagram
+// direction TB
+//     class DataModel {
+// 	    uri
+//     }
+
+//     class DataModelVersion {
+// 	    uri
+// 	    versionIdentifier
+//     }
+
+//     class VersionStatus {
+// 	    DRAFT
+// 	    ACCEPTED
+// 	    RELEASED
+// 	    RETIRED
+//     }
+
+//     class Representation {
+//     }
+
+//     class SourceFile {
+//     }
+
+//     class Document {
+// 	    language
+// 	    syntax
+// 	    isMachineProcessable
+//     }
+
+// 	<<enumeration>> VersionStatus
+
+//     Representation --|> Document
+//     SourceFile --|> Document
+//     DataModelVersion ..|> Representation : hasRepresentation
+//     DataModelVersion --> VersionStatus : hasStatus
+//     Representation o--> SourceFile : hasSource
+//     DataModel <|.. DataModelVersion : versionOf
+// ....
+
+// image::conceptual-model.png[]
+
+// image::conceptual-model.png[link=self,window=_new,width=406,height=778]
+image::conceptual-model.png[width=203,height=389]
+
+xref::image$conceptual-model.png[Zoom in,window=_new]

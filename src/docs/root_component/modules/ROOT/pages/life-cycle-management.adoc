@@ -1,0 +1,116 @@
+= Life Cycle Management
+
+NOTE: The data model follows the life cycle of the data product it is a model of, so we only concern ourselves with the life cycle of _versions_ of the model.
+
+== Life cycle states
+
+The states xref::anatomy[data model versions] can be in and the possible transitions betweem them are given by the following diagram:
+
+.State diagram of a data model version
+[d2,svg]
+----
+direction: right
+
+classes: {
+  state: {
+    width: 100
+    height: 100
+    shape: circle
+  }
+}
+
+*.class: state
+start.style {
+  double-border: true
+  border-radius: 50
+}
+end.style {
+  double-border: true
+  border-radius: 50
+}
+
+start -> draft
+draft -> accepted
+accepted -> released
+released -> retired
+retired -> end
+----
+
+// IMPORTANT: Any data model version is represented by a Git commit.
+
+[horizontal,labelwidth=15]
+draft footnote:[Some changes in drafts may never get accepted and end up getting discarded. Since we do not record discarded changes and have no process defined around them, it it not necessary to describe a state for this scenarion either.]::
+under (active) development
+
+accepted footnote:[The _accepted_ state is a bit nuanced. At some point in time, changes made to a draft version were accepted for the upcoming release. However, it's perfectly possible for subsequent changes to undo earlier ones. This means once accepted changes can later be undone. It's crucial to understand that _accepted_ is time-bound, and not a guarantee for changes to actually end up in the next release.]::
+at some point in time accepted to have its changes be an anticipated part of the upcoming release
+
+released::
+ready to be used by end-users
+
+retired::
+once released, but no longer supported
+
+.Representation in Git
+****
+.Data model version states
+[cols="1,4"]
+|===
+| State | Git representation
+
+| draft
+| commit on the `draft` branch
+
+| accepted
+| commit on the `main` branch
+
+| released
+| `MAJOR.MINOR` tag
+
+| retired
+a|
+[unstyled]
+* `X.Y` tag and
+* `retired` tag
+|===
+****
+
+== Transitions
+
+draft -> accepted:: a draft version has been accepted
+accepted -> released:: a new release has been published
+released -> retired:: a release has been retired
+
+[appendix]
+== Overview
+
+For each of the states the following table provides a description of their meaning, how they are represented in Git, and what particular commitments they guarantee.
+
+.Data model version states
+[cols="h,4,3,4"]
+|===
+| State | Definition | Git representation | Commitments
+
+| draft footnote:[Some changes in drafts may never get accepted and end up getting discarded. Since we do not record discarded changes and have no process defined around them, it it not necessary to describe a state for this scenarion either.]
+| under (active) development
+| commit on the `draft` branch
+| n/a
+
+| accepted
+| at some point in time accepted to have its changes be an anticipated part of the upcoming release
+| commit on the `main` branch
+| n/a
+
+| released
+| ready to be used by end-users
+| `MAJOR.MINOR` tag
+| #TODO#
+
+| retired
+| once released, but no longer supported
+a|
+[unstyled]
+* `X.Y` tag and
+* `retired` tag
+| #TODO#
+|===

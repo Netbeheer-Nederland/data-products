@@ -1,0 +1,48 @@
+= For Modelers
+
+We author and maintain <<dfn-data-model,data models>> for <<dfn-data-product,data products>> owned by Netbeheer Nederland. These models specify the expected structure and semantics of the data provided by the producer.
+
+'''
+
+
+* *What*
+** Data model
+*** Identification
+*** Life cycle
+** Data model version
+*** Identification
+*** Representations
+**** Retrieval
+*** Life cycle
+*** Source
+
+* *How*
+** Data model
+*** Create
+*** Retire
+** Data model version
+*** Work on
+*** Release
+*** Retire
+
+
+== Creating a new data model
+
+== Working on an upcoming release
+
+== Working on a draft version
+
+== Releasing a new version
+
+== Retiring a version
+
+== Retiring a data model
+
+==
+
+[glossary]
+== Terms and definitions
+
+[glossary]
+[[dfn-data-model]]data model:: a specification which describes the expected structure of data within a given context
+[[dfn-data-product]]data product:: a managed and governed self-describing collection of data with purpose, value and ownership

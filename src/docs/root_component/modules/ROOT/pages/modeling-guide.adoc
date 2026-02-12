@@ -1,0 +1,33 @@
+= Modeling Guidelines
+#TODO#.
+
+== Referring to entities in data sets from other data products
+
+The use of proxy classes is anti-pattern which unnecessarly complicates things, gives a false sense of security and is a poor separation of concerns.
+
+.LinkML
+[source,yaml]
+....
+classes:
+  MyClass:
+    attributes:
+      otherThing:
+        range: uriorcurie
+....
+
+.SHACL
+[source,turtle]
+....
+:MyClass a sh:NodeShape ;
+  sh:property [
+    sh:path :otherThing ;
+    sh:nodeKind sh:IRI
+  ] .
+....
+
+This way, references to external entities are just that: _references_, so the data model ought not have to check for more than this. The other data product is responsible for having checked that the data is valid. It makes no sense to do it here also, and even in a fake way.
+
+
+Using proxy classes signal a false sense of security by making it seem as if more rigorous validation has been performed. Yet, the proxy class is just a placeholder class with no substance.
+
+It may seem as if a benefit remaings, namely that the validator can help force you being more 
