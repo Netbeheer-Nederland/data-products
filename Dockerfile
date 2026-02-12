@@ -1,9 +1,10 @@
 FROM python:3.13-alpine3.23
 
-# Set environment variables to avoid interactive prompts during package installation
+# Set environment variables
 ENV RUNNING_IN_DOCKER=true
 ENV PYTHONUNBUFFERED=1
 ENV NODE_PATH=/usr/lib/node_modules
+ENV SCRIPTS=/opt/dataproducten
 
 # Install required packages
 RUN apk add --no-cache \
@@ -48,17 +49,16 @@ RUN just --completions bash >> /usr/share/bash-completion/completions/just \
     && echo 'source /usr/share/bash-completion/completions/just' >> /etc/bash.bashrc
 
 # Copy configuration files
-RUN mkdir -p /opt/dataproducten
-COPY src /opt/dataproducten/
-
-# Invocation directory is working directory for just
-RUN echo "alias just='just -d . '" >> /etc/bash.bashrc
+RUN mkdir -p $SCRIPTS
+COPY src/scripts $SCRIPTS/
 
 # Initialize non-root user
 ENV USER=developer
 ENV GROUPNAME=$USER
 ENV UID=1000
 ENV GID=$UID
+ENV JUST_WORKING_DIRECTORY=.
+ENV JUST_JUSTFILE=$SCRIPTS/justfile
 
 RUN addgroup \
     --gid "$GID" \
