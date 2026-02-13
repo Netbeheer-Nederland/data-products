@@ -22,6 +22,14 @@ img {
   color-scheme: light;
 }
 
+.nav-menu h3:nth-child(2) {
+  margin-bottom: 9px;
+}
+
+.nav-menu hr {
+  border: 0;
+  border-top: 1px solid #e1e1e1;
+
 @media screen and (min-width: 1024px) {
   /*
   .doc {
