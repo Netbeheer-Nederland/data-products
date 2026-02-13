@@ -7,7 +7,7 @@ content:
     - url: ''
       tags: '@({1..9})*({0..9}).+({0..9})'
       branches: ~
-      start_path: documentation
+      start_path: src/docs
 asciidoc:
   attributes:
     page-pagination: ''
@@ -24,9 +24,9 @@ ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
-  supplemental_files: /opt/data-products/antora/supplemental-ui
+  supplemental_files: /opt/dataproducten/antora/supplemental-ui
 antora:
   extensions:
-    - require: '/opt/data-products/antora/add-collector-config.js'
+    - require: '/opt/dataproducten/antora/add-collector-config.js'
     - require: '@antora/collector-extension'
     - require: '@antora/lunr-extension'

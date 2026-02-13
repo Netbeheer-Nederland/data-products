@@ -7,6 +7,9 @@ ENV NODE_PATH=/usr/lib/node_modules
 ENV SCRIPTS=/opt/dataproducten
 ENV SHELL=/bin/bash
 
+# Whether in CI/CD pipeline or not. Overridden by GitHub Actions if running there.
+ENV CI=false
+
 # Install required packages
 RUN apk add --no-cache \
     vim=9.1.2132-r0 \
@@ -24,7 +27,7 @@ SHELL ["/bin/bash", "-c"]
 # Install Python project dependencies
 RUN uv pip install --system \
     "linkml==1.9.6" \
-    "linkml-asciidoc-generator @ git+https://github.com/Netbeheer-Nederland/linkml-asciidoc-generator.git@v0.5.0" \
+    "linkml-asciidoc-generator @ git+https://github.com/Netbeheer-Nederland/linkml-asciidoc-generator.git@v0.6.0-alpha2" \
     "gen-linkml-profile @ git+https://github.com/Netbeheer-Nederland/gen-linkml-profile.git@v0.22.0" \
     "check-jsonschema==0.32.0" \
     "jinja-cli==1.2.2"
