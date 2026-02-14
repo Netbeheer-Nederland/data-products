@@ -20,7 +20,8 @@ RUN apk add --no-cache \
     npm=11.6.3-r0 \
     uv=0.10.2-r0 \
     just==1.43.1-r0 \
-    github-cli=2.83.0-r3
+    github-cli=2.83.0-r3 \
+    openssh=10.2_p1-r0
 
 SHELL ["/bin/bash", "-c"]
 
