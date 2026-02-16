@@ -78,11 +78,6 @@ aside.nav .nav-panel-explore {
   background-color: #f3f7f9;
 }
 
-/* Footer */
-footer.footer {
-  background-color: #f3f7f9;
-}
-
 @media screen and (min-width: 1024px) {
   nav .nav-list > li {
     max-width: 100%;
