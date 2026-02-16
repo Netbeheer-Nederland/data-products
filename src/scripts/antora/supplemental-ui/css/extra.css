@@ -1,9 +1,73 @@
-nav.navbar {
-  background: #005f87;
+body, .doc {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  color: #002d41 !important;
+#search-field > label.filter {
+    display: none;
+}
+
+a.site-button {
+    color: #005f87;
+}
+
+.doc {
+    max-width: unset;
+}
+
+/*
+.nav .panels {
+    width: 600px;
+}
+*/
+
+.nav,
+.navbar,
+.toolbar,
+.nav-panel-explore .components,
+.doc .sidebarblock {
+    background-color: #f3f7f9;
+}
+
+.navbar > .navbar-brand > .navbar-item,
+.navbar > #topbar-nav > .navbar-end > .navbar-item {
+    color: #002d41;
+}
+
+
+.doc a {
+    color: #005f87;
+}
+
+.toc .toc-menu a {
+    color: #335767;
+}
+
+.toc .toc-menu a.is-active {
+    border-left-color: #005f87;
+}
+
+.doc h1, .doc h2, .doc h3, .doc h4, .doc h5, .doc h6 {
+    color: #002d41;
+}
+
+footer.footer {
+    background-color: #e6eff4;
+}
+
+.navbar-end .navbar-item.has-dropdown:hover .navbar-link,
+.navbar-end .navbar-link:hover,
+.navbar-end>a.navbar-item:hover {
+    background: inherit;
+    text-decoration: underline;
+}
+
+@media (pointer: fine) {
+    @supports (scrollbar-width:thin) {
+        body * {
+            scrollbar-color: #d9e7ef transparent;
+        }
+    }
 }
 
 article.doc code {
@@ -31,11 +95,9 @@ img {
   border-top: 1px solid #e1e1e1;
 
 @media screen and (min-width: 1024px) {
-  /*
   .doc {
-    max-width: 77rem;
+    max-width: unset;
   }
-  */
 
   nav .nav-list > li {
     max-width: 100%;
