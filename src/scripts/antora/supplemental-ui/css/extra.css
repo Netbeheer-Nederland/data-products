@@ -1,65 +1,14 @@
+/* General */
 body, .doc {
   font-family: Poppins, sans-serif;
   font-size: 16px;
 }
 
-#search-field > label.filter {
-    display: none;
-}
-
-a.site-button {
-    color: #005f87;
-}
-
-.doc {
-    max-width: unset;
-}
-
-/*
-.nav .panels {
-    width: 600px;
-}
-*/
-
-.nav,
-.navbar,
-.toolbar,
-.nav-panel-explore .components,
-.doc .sidebarblock {
-    background-color: #f3f7f9;
-}
-
-.navbar > .navbar-brand > .navbar-item,
-.navbar > #topbar-nav > .navbar-end > .navbar-item {
-    color: #002d41;
-}
-
-
-.doc a {
-    color: #005f87;
-}
-
-.toc .toc-menu a {
-    color: #335767;
-}
-
-.toc .toc-menu a.is-active {
-    border-left-color: #005f87;
-}
-
-.doc h1, .doc h2, .doc h3, .doc h4, .doc h5, .doc h6 {
-    color: #002d41;
-}
-
-footer.footer {
-    background-color: #e6eff4;
-}
-
-.navbar-end .navbar-item.has-dropdown:hover .navbar-link,
-.navbar-end .navbar-link:hover,
-.navbar-end>a.navbar-item:hover {
-    background: inherit;
-    text-decoration: underline;
+.truncate {
+  max-width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (pointer: fine) {
@@ -70,35 +19,71 @@ footer.footer {
     }
 }
 
-article.doc code {
+/* Content area */
+
+.doc h1,
+.doc h2,
+.doc h3,
+.doc h4,
+.doc h5,
+.doc h6 {
+    color: #002d41;
+}
+
+.doc code {
   padding: 0;
 }
 
-.truncate {
-  max-width: 50px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
+/* Images */
 img {
   max-height: 33vh;
   color-scheme: light;
 }
 
-.nav-menu h3:nth-child(2) {
-  margin-bottom: 9px;
+
+/* Navbar */
+nav.navbar {
+   background-color: #f3f7f9;
 }
 
-.nav-menu hr {
-  border: 0;
-  border-top: 1px solid #e1e1e1;
+nav.navbar .navbar-item {
+    color: #002d41;
+}
+
+.navbar-end .navbar-item.has-dropdown:hover .navbar-link,
+.navbar-end .navbar-link:hover,
+.navbar-end>a.navbar-item:hover {
+    background: inherit;
+    color: #002d41;
+    text-decoration: underline;
+}
+
+/* Hide "search in project" filter */
+#search-field > label.filter {
+    display: none;
+}
+
+/* Nav menu */
+aside.nav {
+   background-color: #f3f7f9;
+}
+
+/* Toolbar */
+main > .toolbar {
+   background-color: #f3f7f9;
+}
+
+/* Nav explorer */
+aside.nav .nav-panel-explore {
+   background-color: #f3f7f9;
+}
+
+/* Footer */
+footer.footer {
+    background-color: #e6eff4;
+}
 
 @media screen and (min-width: 1024px) {
-  .doc {
-    max-width: unset;
-  }
-
   nav .nav-list > li {
     max-width: 100%;
     white-space: nowrap;
@@ -125,3 +110,9 @@ img {
   }
   */
 }
+
+/* Miscellaneous */
+
+/* a.site-button {
+    color: #005f87;
+} */
