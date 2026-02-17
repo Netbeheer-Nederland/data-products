@@ -1,7 +1,7 @@
 set shell := ["bash", "-uc"]
 name := shell("yq .name src/model/*.linkml.yml | tr '-' '_'")
 title := shell("yq .title ./src/model/*.linkml.yml")
-version := shell("git rev-parse --abbrev-ref HEAD")
+get_version := "git rev-parse --abbrev-ref HEAD"
 site_title := shell("yq .title src/model/*.linkml.yml")
 
 _default:
@@ -29,7 +29,7 @@ _generate_asciidoc:
     echo -e "Generating documentation (AsciiDoc)…"
     mkdir -p output/docs/adoc
     cp -r src/docs/* output/docs/adoc
-    yq -i '.version = "{{version}}"' output/docs/adoc/antora.yml
+    yq -i '.version = "{{shell(get_version)}}"' output/docs/adoc/antora.yml
     yq -i '.title = "{{title}}"' output/docs/adoc/antora.yml
     echo
     echo "Generating schema documentation…"
@@ -86,18 +86,11 @@ _generate_json_examples:
 _post-process-schema:
     mkdir -p output/schemas
     cp src/model/{{name}}.linkml.yml output/schemas/{{name}}.linkml.yml
-    yq -i '.version = "{{version}}"' output/schemas/{{name}}.linkml.yml
-    yq -i '.id = "https://modellen.netbeheernederland.nl/{{name}}/{{version}}"' output/schemas/{{name}}.linkml.yml
+    yq -i '.version = "{{shell(get_version)}}"' output/schemas/{{name}}.linkml.yml
+    yq -i '.id = "https://modellen.netbeheernederland.nl/{{name}}/{{shell(get_version)}}"' output/schemas/{{name}}.linkml.yml
 
-    # Write LinkML version to schema in output.
     # Write env version as metadata to schema.
     # Generation date.
-    # Do this prior to additional artifacts which could rely on it (especially the version).
-    # Replace all usage of src/ to output/ in Justfile
-
-    #@echo "Generating site using Antora…"
-    #@if [ $CI == "true"  ]; then \
-
 
 # Generate and assemble
 [group("development"),private]
@@ -158,7 +151,7 @@ release-minor-version:
     #!/bin/bash
     git fetch && git fetch --tags
 
-    if [ "{{version}}" == "main" ]; then
+    if [ "{{shell(get_version)}}" == "main" ]; then
         exit 1
     fi
 
