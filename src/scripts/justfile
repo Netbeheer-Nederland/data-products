@@ -87,6 +87,7 @@ _post-process-schema:
     mkdir -p output/schemas
     cp src/model/{{name}}.linkml.yml output/schemas/{{name}}.linkml.yml
     yq -i '.version = "{{version}}"' output/schemas/{{name}}.linkml.yml
+    yq -i '.id = "https://modellen.netbeheernederland.nl/{{name}}/{{version}}' output/schemas/{{name}}.linkml.yml
 
     # Write LinkML version to schema in output.
     # Write env version as metadata to schema.
@@ -124,35 +125,66 @@ serve:
     @echo
     http-serve output/docs/html
 
-_determine-major-version:
-    #!/bin/env bash
+# Release new major version
+[group("version-control")]
+release-major-version:
+    #!/bin/bash
     git fetch && git fetch --tags
 
     latest_major=$(git tag -l | grep -P '^\d+\.\d+$' | cut -d . -f 1 | sort -n | tail -1)
     if [ -z "$latest_major" ]; then
-        new_major=1.0;
+        new_version=1.0
     else
-        new_major=$(echo $latest_major + 1 | bc).0;
+        new_version=$(echo $latest_major + 1 | bc).0
     fi
 
-    echo "New major version is: $new_major"
+    echo "New version number is: $new_version"
+
+    echo "Proceed with tagging the new version and building? [y/N]"
+    read proceed
+    if [ "$proceed" == "y" ]; then \
+        git tag $new_version
+        git push --tags
+        gh workflow run build-and-deploy.yml
+        echo "OK."
+    else
+        echo "Operation canceled."
+    fi
     echo
-    echo "Writing new major version to LinkML schema…"
-    yq -i '.version = env(version)' $OUTDIR/antora.yml
-
-    echo "OK."
-    echo
-
-
-# Release new major version
-[group("version-control")]
-release-major-version:
-    @echo TODO…
 
 # Release new minor version
 [group("version-control")]
 release-minor-version:
-    @echo TODO…
+    #!/bin/bash
+    git fetch && git fetch --tags
+
+    if [ "{{version}}" == "main" ]; then
+        exit 1
+    fi
+
+    latest_version=$(git tag -l | grep -P '^\d+\.\d+$' | sort -t . -k 1,1n -k 2,2n | tail -1)
+    if [ -z "$latest_version" ]; then
+        new_version=1.0
+    else
+        latest_major=$(echo $latest_version | cut -d . -f 1)
+        latest_minor=$(echo $latest_version | cut -d . -f 2)
+        new_minor=$(echo $latest_minor + 1 | bc)
+        new_version=$latest_major.$new_minor
+    fi
+
+    echo "New version number is: $new_version"
+
+    echo "Proceed with tagging the new version and building? [y/N]"
+    read proceed
+    if [ "$proceed" == "y" ]; then \
+        git tag $new_version
+        git push --tags
+        gh workflow run build-and-deploy.yml
+        echo "OK."
+    else
+        echo "Operation canceled."
+    fi
+    echo
 
 # Submit for review to accept changes
 [group("version-control")]

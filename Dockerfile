@@ -22,7 +22,8 @@ RUN apk add --no-cache \
     just==1.43.1-r0 \
     github-cli=2.83.0-r3 \
     openssh=10.2_p1-r0 \
-    tar=1.35-r4
+    tar=1.35-r4 \
+    grep=3.12-r0
 
 SHELL ["/bin/bash", "-c"]
 
