@@ -55,6 +55,11 @@ RUN wget https://github.com/mikefarah/yq/releases/download/v4.52.2/yq_linux_amd6
 RUN mkdir -p $SCRIPTS
 COPY src/scripts $SCRIPTS/
 
+# Get Antora UI files
+RUN wget https://github.com/Netbeheer-Nederland/antora-ui/archive/refs/tags/0.9.tar.gz -O antora-ui.tar.gz \
+    && tar -xvzf antora-ui.tar.gz
+RUN cp -r antora-ui-*/supplemental-ui $SCRIPTS/antora/
+
 # Install shell completions for just
 RUN mkdir -p /usr/share/bash-completion/completions
 RUN just --completions bash >> /usr/share/bash-completion/completions/just
