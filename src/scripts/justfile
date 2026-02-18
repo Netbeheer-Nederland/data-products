@@ -1,7 +1,7 @@
 set shell := ["bash", "-uc"]
 name := shell("yq .name src/model/*.linkml.yml | tr '-' '_'")
 title := shell("yq .title ./src/model/*.linkml.yml")
-get_version := "git rev-parse --abbrev-ref HEAD"
+ref_name := "git rev-parse --abbrev-ref HEAD"
 site_title := shell("yq .title src/model/*.linkml.yml")
 
 _default:
@@ -29,7 +29,7 @@ _generate_asciidoc:
     echo -e "Generating documentation (AsciiDoc)…"
     mkdir -p output/docs/adoc
     cp -r src/docs/* output/docs/adoc
-    yq -i '.version = "{{shell(get_version)}}"' output/docs/adoc/antora.yml
+    yq -i 'del(.version)' output/docs/adoc/antora.yml
     yq -i '.title = "{{title}}"' output/docs/adoc/antora.yml
     echo
     echo "Generating schema documentation…"
@@ -86,8 +86,8 @@ _generate_json_examples:
 _post-process-schema:
     mkdir -p output/schemas
     cp src/model/{{name}}.linkml.yml output/schemas/{{name}}.linkml.yml
-    yq -i '.version = "{{shell(get_version)}}"' output/schemas/{{name}}.linkml.yml
-    yq -i '.id = "https://modellen.netbeheernederland.nl/{{name}}/{{shell(get_version)}}"' output/schemas/{{name}}.linkml.yml
+    yq -i '.version = env(version)' output/schemas/{{name}}.linkml.yml
+    yq -i '.id = "https://modellen.netbeheernederland.nl/{{name}}/" + env(version)' output/schemas/{{name}}.linkml.yml
 
     # Write env version as metadata to schema.
     # Generation date.
@@ -124,6 +124,11 @@ release-major-version:
     #!/bin/bash
     git fetch && git fetch --tags
 
+    echo $version
+    if [ {{shell(ref_name)}} != "main" ]; then
+        echo 'Releasing is only allowed from the `main` branch.' && exit 1
+    fi
+
     latest_major=$(git tag -l | grep -P '^\d+\.\d+$' | cut -d . -f 1 | sort -n | tail -1)
     if [ -z "$latest_major" ]; then
         new_version=1.0
@@ -133,13 +138,13 @@ release-major-version:
 
     echo "New version number is: $new_version"
 
-    echo "Proceed with tagging the new version and building? [y/N]"
+    echo "Proceed with tagging the new version? [y/N]"
     read proceed
     if [ "$proceed" == "y" ]; then \
         git tag $new_version
         git push --tags
-        gh workflow run build-and-deploy.yml
         echo "OK."
+        echo "Please trigger a build and deploy action here: https://github.com/Netbeheer-Nederland/{{name}}/actions/workflows/build-and-deploy.yml"
     else
         echo "Operation canceled."
     fi
@@ -151,8 +156,8 @@ release-minor-version:
     #!/bin/bash
     git fetch && git fetch --tags
 
-    if [ "{{shell(get_version)}}" == "main" ]; then
-        exit 1
+    if [ {{shell(ref_name)}} != "main" ]; then
+        echo 'Releasing is only allowed from the `main` branch.' && exit 1
     fi
 
     latest_version=$(git tag -l | grep -P '^\d+\.\d+$' | sort -t . -k 1,1n -k 2,2n | tail -1)
@@ -172,8 +177,8 @@ release-minor-version:
     if [ "$proceed" == "y" ]; then \
         git tag $new_version
         git push --tags
-        gh workflow run build-and-deploy.yml
         echo "OK."
+        echo "Please trigger a build and deploy action here: https://github.com/Netbeheer-Nederland/{{name}}/actions/workflows/build-and-deploy.yml"
     else
         echo "Operation canceled."
     fi

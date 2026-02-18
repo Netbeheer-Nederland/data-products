@@ -7,6 +7,8 @@ module.exports.register = function () {
         let collector = {
           run: {
               command: `just generate-and-assemble`,
+              env: [{ name: "version",
+                      value: origin.refname}]
           },
           scan: {
             clean: true,
