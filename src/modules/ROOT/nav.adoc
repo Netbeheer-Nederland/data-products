@@ -1,9 +1,9 @@
-* xref:dataproducten::redacteurs/index.adoc[Redacteurs]
-** xref:dataproducten::redacteurs/modelleringsrichtlijnen.adoc[Modelleringsrichtlijnen]
-* xref:dataproducten::ontwikkelaars/index.adoc[Ontwikkelaars]
-** xref::definition.adoc[Definitie]
-** xref::representation.adoc[Representatie]
+* xref::modelers/index.adoc[Modelers]
+** xref::modelers/modeling-guidelines.adoc[Modeling guidelines]
+* xref::architects/index.adoc[Architects]
+** xref::architects/definition.adoc[Definition]
+** xref::architects/representation.adoc[Representation]
 ** xref::life-cycle.adoc[Lifecycle]
-* Modellen
+* Models
 ** https://modellen.netbeheernederland.nl/capaciteitskaart[Capaciteitskaart]
 ** Buurtnet

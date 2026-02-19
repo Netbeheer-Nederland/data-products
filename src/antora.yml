@@ -1,5 +1,5 @@
 name: ROOT
-title: Dataproducten
+title: Data Products
 version: ~
 nav:
 - modules/ROOT/nav.adoc
