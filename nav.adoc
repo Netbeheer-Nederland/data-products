@@ -1,0 +1,22 @@
+* xref::modelers/index.adoc[For Modelers]
+** Reference Models
+*** https://modellen.netbeheernederland.nl/tc57cim[TC57CIM]
+** xref::modelers/modeling-guidelines.adoc[Modeling Guidelines]
+* xref::architects/index.adoc[For Architects]
+** https://modellen.netbeheernederland.nl/solution-designs[Solution Designs]
+** https://modellen.netbeheernederland.nl/adrs[Architecture Decision Records]
+** https://modellen.netbeheernederland.nl/uri-policy[URI Policy]
+// ** xref::architects/definition.adoc[Definition]
+// ** xref::architects/representation.adoc[Representation]
+// ** xref::life-cycle.adoc[Lifecycle]
+* Models
+// ** https://modellen.netbeheernederland.nl/buurtnet-operation[Buurtnet Operation]
+// ** https://modellen.netbeheernederland.nl/buurtnet-topology[Buurtnet Topology]
+** https://modellen.netbeheernederland.nl/capaciteitskaart[Capaciteitskaart]
+** https://modellen.netbeheernederland.nl/meetdata[Meetdata]
+** https://modellen.netbeheernederland.nl/netburen[Netburen]
+** NBNL Profile Group
+*** https://modellen.netbeheernederland.nl/nbnl-equipment[NBNL Equipment]
+*** https://modellen.netbeheernederland.nl/nbnl-operation[NBNL Operation]
+*** https://modellen.netbeheernederland.nl/nbnl-geographical-location[NBNL Geographical Location]
+*** https://modellen.netbeheernederland.nl/nbnl-topology[NBNL Topology]
