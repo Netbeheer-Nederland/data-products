@@ -5,11 +5,6 @@ nav_order: 1
 
 # Data Products
 
-
-
-
-
-
 ## NBNL Profile Group
 * **[NBNL Equipment](https://modellen.netbeheernederland.nl/nbnl-equipment)**
   <br>Defines the electrical equipment in the network model, including their technical characteristics and relationships.
