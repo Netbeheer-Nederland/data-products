@@ -12,11 +12,11 @@ draft
 
 ## Working on the upcoming release
 
+![](../assets/images/process/working_on_an_upcoming_release.drawio.svg){: .d-block .mx-auto .my-5 }
 Process of working on the upcoming release
 {: .text-delta}
-![](../assets/images/process/working_on_an_upcoming_release.drawio.svg){: .d-block .mx-auto }
 
-Upon reaching the end of this process, the model version wil transition from the _draft_ to the _accepted_ state.
+A model with life cycle state [_draft_](../architecture/data_product_information_model#dfn-imv-lc-state-draft) is inputted at _Start_ in the process, and upon completion of the process (_End_) the model version has the state [_accepted_](../architecture/data_product_information_model#dfn-imv-lc-state-accepted).
 
 ### Make changes
 
@@ -45,11 +45,11 @@ In case the resulting version on the `main` branch is desired to be released, pl
 
 ## Releasing a version
 
+![](../assets/images/process/releasing_a_version.drawio.svg){: .d-block .mx-auto .my-5 }
 Process of releasing a new version
 {: .text-delta}
-![](../assets/images/process/releasing_a_version.drawio.svg){: .d-block .mx-auto }
 
-When the end of this process is reached, the model version wil transition from the _accepted_ to the _released_ state.
+A model with life cycle state [_accepted_](../architecture/data_product_information_model#dfn-imv-lc-state-accepted) is inputted at _Start_ in the process, and upon completion of the process (_End_) the model version has the state [_released_](../architecture/data_product_information_model#dfn-imv-lc-state-released).
 
 ### Test prerelease
 

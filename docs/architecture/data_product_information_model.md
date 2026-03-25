@@ -78,8 +78,8 @@ We discern the following possible states during the life cycle of an information
 Possible states
 {: .text-delta }
 <dl>
-  <dt>active</dt><dd>in use by a data product</dd>
-  <dt>retired</dt><dd>no longer supported</dd>
+  <dt id="dfn-im-lc-state-active">active</dt><dd>in use by a data product</dd>
+  <dt id="dfn-im-lc-state-retired">retired</dt><dd>no longer supported</dd>
 </dl>
 
 ### Information model version
@@ -91,10 +91,10 @@ The life cycle of a version of an information model is described by the followin
 Possible states
 {: .text-delta }
 <dl>
-  <dt>draft</dt><dd>under (active) development</dd>
-  <dt>accepted</dt><dd>at some point in time accepted to have its changes be an anticipated part of the upcoming release</dd>
-  <dt>released</dt><dd>stable and ready to be used by end-users</dd>
-  <dt>retired</dt><dd>once released, but no longer supported</dd>
+  <dt id="dfn-imv-lc-state-draft">draft</dt><dd>under (active) development</dd>
+  <dt id="dfn-imv-lc-state-accepted">accepted</dt><dd>at some point in time accepted to have its changes be an anticipated part of the upcoming release</dd>
+  <dt id="dfn-imv-lc-state-released">released</dt><dd>stable and ready to be used by end-users</dd>
+  <dt id="dfn-imv-lc-state-retired">retired</dt><dd>once released, but no longer supported</dd>
 </dl>
 
 ## Representation
