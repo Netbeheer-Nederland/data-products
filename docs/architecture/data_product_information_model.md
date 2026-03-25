@@ -23,7 +23,7 @@ Table of Contents
 
 ## Definition
 
-![](/assets/images/architecture/model-anatomy.drawio.svg){: .d-block .mx-auto }
+![](../assets/images/architecture/model-anatomy.drawio.svg){: .d-block .mx-auto }
 
 Definitions
 {: .text-delta }
@@ -73,7 +73,7 @@ The life cycle of an information model is, naturally, intimately related to the 
 
 We discern the following possible states during the life cycle of an information model:
 
-![](/assets/images/architecture/life-cycle-model.drawio.svg){: .d-block .mx-auto}
+![](../assets/images/architecture/life-cycle-model.drawio.svg){: .d-block .mx-auto}
 
 Possible states
 {: .text-delta }
@@ -86,7 +86,7 @@ Possible states
 
 The life cycle of a version of an information model is described by the following state diagram:
 
-![](/assets/images/architecture/life-cycle-model-version.drawio.svg){: .d-block .mx-auto}
+![](../assets/images/architecture/life-cycle-model-version.drawio.svg){: .d-block .mx-auto}
 
 Possible states
 {: .text-delta }
