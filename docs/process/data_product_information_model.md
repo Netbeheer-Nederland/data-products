@@ -34,14 +34,14 @@ To achieve this, a pull request is created -- if this was not already done -- so
 
 At least one other modeler must review the changes made, and submit whether they accept or reject these changes.
 
-* If the changes are accepted, follow the [Accept changes](#Accept changes) step.
-* If the changes are rejected, return to the [Make changes](#Make changes) step.
+* If the changes are accepted, follow the [Accept changes](#accept-changes) step.
+* If the changes are rejected, return to the [Make changes](#make-changes) step.
 
 ### Accept changes
 
 If the changes are accepted, the `draft` branch should be merged onto the `main` branch, thereby effectuating accepted changes.
 
-In case the resulting version on the `main` branch is desired to be released, please consult the [Releasing a version](#Releasing a version) process.
+In case the resulting version on the `main` branch is desired to be released, please consult the [Releasing a version](#releasing-a-version) process.
 
 ## Releasing a version
 
@@ -55,7 +55,7 @@ When the end of this process is reached, the model version wil transition from t
 
 To make sure no bugs or undesired changes have crept in, before releasing a version it must first be tested.
 
-* If the test is successful: [Designate release](#Designate release).
+* If the test is successful: [Designate release](#designate-release).
 * If not, make the necessary changes by following the [Working on the upcoming release](#working-on-the-upcoming-release) process.
 
 ### Designate release
