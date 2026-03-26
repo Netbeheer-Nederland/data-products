@@ -58,10 +58,29 @@ URI templates<sup>[RFC6570](#rfc6570)</sup>
 where:
 <dl>
   <dt><code>name</code></dt><dd>meaningful name in <a href="https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case">kebab-case</a></dd>
-  <dt><code>version</code></dt><dd><a href="#lifecycle">version identifier</a></dd>
+  <dt><code>version</code></dt><dd><a href="#version-identifier">version identifier</a></dd>
 </dl>
 
 ---
+
+### Version identifier
+
+Given an information model, to discern one version from another we need a _version identifier_.
+
+{: .note }
+> VCS systems like Git track versions and assign unique hashes which identify them. Although these serve as version identifiers, we are looking for a logical versioning scheme which is decoupled from the physical implementation.
+
+Besides identifying a specific version, a version identifier also informs you about the life cycle state of the version.
+
+Currently, the following version identification scheme is maintained:
+
+Version identifier and the associated life cycle state
+{: .text-delta }
+<dl>
+  <dt><code>draft/*</code></dt><dd><a href="#dfn-imv-lc-state-draft">draft</a></dd>
+  <dt><code>main</code></dt><dd><a href="#dfn-imv-lc-state-accepted">accepted</a></dd>
+  <dt><code>X.Y</code></dt><dd><a href="#dfn-imv-lc-state-released">released</a></dd>
+</dl>
 
 ## Life cycle management
 
