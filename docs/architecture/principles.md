@@ -1,6 +1,7 @@
 ---
-parent: Architecture
+# parent: Architecture
 title: Principles
+nav_exclude: true
 ---
 
 # Principles

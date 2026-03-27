@@ -1,6 +1,6 @@
 ---
 title: Glossary
-nav_order: 99
+nav_order: 2
 ---
 
 # Glossary

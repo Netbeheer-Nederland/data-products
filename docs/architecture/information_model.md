@@ -1,6 +1,7 @@
 ---
-parent: Architecture
+# parent: Architecture
 title: Information Model
+nav_exclude: true
 ---
 
 {: .no_toc }

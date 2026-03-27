@@ -1,6 +1,6 @@
 ---
 title: Information Models
-nav_order: 5
+nav_order: 6
 ---
 
 # Information Models
