@@ -1,14 +1,22 @@
 ---
 parent: Architecture
-title: SchemaOps
-nav_order: 2
+title: Principles
 ---
 
-# SchemaOps
+# Principles
 {: .d-inline-block }
 draft
 {: .label .label-yellow }
 
+{: .note-title }
+> This page may move to the more general Modellen NBNL site.
+
+## Prioritize standards
+
+## FAIR and Linked Data
+TODO.
+
+## SchemaOps
 To leverage the benefits of automation and the engineering experience in the software development and DevOps paradigms, we adopt a way of working called SchemaOps. Its core tenets can be summarized as follows:
 
 * Represent information models and their documentation as **plain text**.

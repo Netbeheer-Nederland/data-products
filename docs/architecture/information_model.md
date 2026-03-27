@@ -1,7 +1,6 @@
 ---
 parent: Architecture
 title: Information Model
-nav_order: 1
 ---
 
 {: .no_toc }
