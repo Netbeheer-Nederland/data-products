@@ -15,4 +15,4 @@ To interpret these processes and our work in context, please first consult the f
 
 ## Exchanging the data
 
-![](../assets/process/exchanging_the_data.drawio.svg)
+![](../assets/images/process/exchanging_the_data.drawio.svg){: .d-block .mx-auto .my-5 }
