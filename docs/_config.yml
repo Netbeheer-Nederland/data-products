@@ -21,3 +21,8 @@ aux_links:
     - "https://github.com/netbeheer-nederland/data-products"
   "<img src=\"/assets/images/favicon.png\" style=\"height:1rem; margin-right:0.5em; margin-bottom:0.1rem\" />Models":
     - "https://modellen.netbeheernederland.nl"
+  
+nav_external_links:
+  - title: Solution Designs
+    url: https://modellen.netbeheernederland.nl/solution-designs
+    opens_in_new_tab: true
