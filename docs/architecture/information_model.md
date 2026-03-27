@@ -1,16 +1,16 @@
 ---
 parent: Architecture
-title: Data Product Information Model
+title: Information Model
 nav_order: 1
 ---
 
 {: .no_toc }
-# Data Product Information Model
+# Information Model
 {: .d-inline-block }
 draft
 {: .label .label-yellow }
 
-From the point of view on architect, this document provides an explanation of what constitutes an information model for a data product, how it is represented and how the life cycle of it and its versions is managed.
+This document provides an explanation of what constitutes an information model of a data product, how it is represented and how the life cycle of it and its versions is managed.
 
 ---
 
