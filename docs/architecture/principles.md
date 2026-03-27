@@ -8,13 +8,14 @@ title: Principles
 draft
 {: .label .label-yellow }
 
-{: .note-title }
+{: .note }
 > This page may move to the more general Modellen NBNL site.
 
 ## Prioritize standards
+...
 
 ## FAIR and Linked Data
-TODO.
+...
 
 ## SchemaOps
 To leverage the benefits of automation and the engineering experience in the software development and DevOps paradigms, we adopt a way of working called SchemaOps. Its core tenets can be summarized as follows:
