@@ -21,7 +21,7 @@ A model with life cycle state [_accepted_](../architecture/information-model#dfn
 To make sure no bugs or undesired changes have crept in, before releasing a version it must first be tested.
 
 * If the test is successful: [Designate release](#designate-release).
-* If not, make the necessary changes by following the [Working on the upcoming release](#working-on-the-upcoming-release) process.
+* If not, make the necessary changes by following the [Working on the upcoming release](#working-on-the-next-release) process.
 
 ### Designate release
 
