@@ -11,8 +11,8 @@ To interpret these processes and our work in context, please first consult the f
 
 ## Modeling the information
 
-![](../assets/images/process/modeling_the_information.drawio.svg){: .d-block .mx-auto .my-5 }
+![](../assets/images/process/modeling-the-information.drawio.svg){: .d-block .mx-auto .my-5 }
 
 ## Exchanging the data
 
-![](../assets/images/process/exchanging_the_data.drawio.svg){: .d-block .mx-auto .my-5 }
+![](../assets/images/process/exchanging-the-data.drawio.svg){: .d-block .mx-auto .my-5 }

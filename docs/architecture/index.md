@@ -5,10 +5,7 @@ nav_order: 4
 
 # Architecture
 
-* **[Principles](principles)**
-    <br>General architectural principles we adhere to.
-
-* **[Information Model](information_model)**
+* **[Information Model](information-model)**
     <br>Provides an explanation of what constitutes an information model of a data product, how it is represented and how the life cycle of it and its versions is managed.
 
 * **[Architecture Decision Records](https://modellen.netbeheernederland.nl/adrs)**
