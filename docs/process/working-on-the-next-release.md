@@ -10,11 +10,11 @@ nav_order: 2
 draft
 {: .label .label-yellow }
 
-![](../assets/images/process/working_on_an_upcoming_release.drawio.svg){: .d-block .mx-auto .my-5 }
+![](../assets/images/process/working-on-an-upcoming-release.drawio.svg){: .d-block .mx-auto .my-5 }
 Process of working on the next release
 {: .text-delta}
 
-A model with life cycle state [_draft_](../architecture/information_model#dfn-imv-lc-state-draft) is inputted at _Start_ in the process, and upon completion of the process (_End_) the model version has the state [_accepted_](../architecture/information_model#dfn-imv-lc-state-accepted).
+A model with life cycle state [_draft_](../architecture/information-model#dfn-imv-lc-state-draft) is inputted at _Start_ in the process, and upon completion of the process (_End_) the model version has the state [_accepted_](../architecture/information-model#dfn-imv-lc-state-accepted).
 
 ### Make changes
 
@@ -39,4 +39,4 @@ At least one other modeler must review the changes made, and submit whether they
 
 If the changes are accepted, the `draft` branch should be merged onto the `main` branch, thereby effectuating accepted changes.
 
-In case the resulting version on the `main` branch is desired to be released, please consult the [Releasing a version](releasing_a_version) process.
+In case the resulting version on the `main` branch is desired to be released, please consult the [Releasing a version](releasing-a-version) process.
