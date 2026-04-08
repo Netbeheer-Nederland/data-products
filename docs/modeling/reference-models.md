@@ -12,5 +12,5 @@ nav_order: 1
 * **[TC57CIM](https://modellen.netbeheernederland.nl/tc57cim)**
   <br>The Common Information Model (CIM) is an electric power transmission and distribution standard developed by the electric power industry.
 
-* **[CGMES](https://modellen.netbeheernederland.nl/im-cgmes)**
+* **[CGMES](https://modellen.netbeheernederland.nl/cgmes)**
   <br>Energy management system application program interface (EMS-API) - Part 600-1: Common Grid Model Exchange Standard (CGMES) - Structure and rules.
