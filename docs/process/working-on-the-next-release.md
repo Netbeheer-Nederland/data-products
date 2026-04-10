@@ -20,13 +20,11 @@ A model with life cycle state [_draft_](../architecture/information-model#dfn-im
 
 Any changes are made and committed and pushed to the `draft` branch.
 
-For learning more about how to develop the information model, see: [TODO]().
-
 ### Propose changes
 
 When changes are finished, they should be proposed to become accepted for the next release.
 
-To achieve this, a pull request is created -- if this was not already done -- so a review can be carried out by peers. 
+To achieve this, a pull request is created -- if this was not already done -- so a review can be carried out by peers.
 
 ### Review changes
 
