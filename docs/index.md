@@ -3,7 +3,7 @@ title: Start Page
 nav_order: 1
 ---
 
-# Data Product Information Models
+# Data Products
 
 On this site Netbeheer Nederland publishes [information models](information-models) for data products, including those for the [NBNL Profile Group](information-models/nbnl-profile-group).
 
