@@ -7,7 +7,7 @@ nav_order: 1
 
 On this site Netbeheer Nederland publishes [information models](information-models) for data products, including those for the [NBNL Profile Group](information-models/nbnl-profile-group).
 
-Furthermore, supporting resources can be found, including [reference models](modeling/reference-models), [modelling Guidelines](https://modellen.netbeheernederland.nl/modeling-guidelines), [solution designs](https://modellen.netbeheernederland.nl/solution-designs) and [process](process) and [architecture](architecture) documentation.
+Furthermore, supporting resources can be found, including [reference models](modeling/reference-models), [modelling guidelines](https://modellen.netbeheernederland.nl/modeling-guidelines), [solution designs](https://modellen.netbeheernederland.nl/solution-designs) and [process](process) and [architecture](architecture) documentation.
 
 ---
 
