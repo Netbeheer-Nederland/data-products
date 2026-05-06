@@ -118,9 +118,9 @@ Possible states
 
 ## Representation
 
-An information model version is expressed in the [LinkML data modeling language](https://linkml.io)[^2], i.e. **each information model version is a LinkML schema**.
+An information model version is expressed in the [LinkML data modelling language](https://linkml.io)[^2], i.e. **each information model version is a LinkML schema**.
 
- <!-- , which is particularly suited for modeling data exchange in a decentral architecture. -->
+ <!-- , which is particularly suited for modelling data exchange in a decentral architecture. -->
 
 Currently, the following representations are provided for a model version:
 
@@ -179,5 +179,5 @@ References
 Footnotes
 
 [^1]: Abstract resources are non-informational, i.e. they have no representations.
-[^2]: If at some point a different modeling language is chosen, this may lead to different versions of an information model using different metamodels but still be versions of the same abstract information model.
+[^2]: If at some point a different modelling language is chosen, this may lead to different versions of an information model using different metamodels but still be versions of the same abstract information model.
 [^3]: Standard practice would be to implement content-negotiation, but this has not been implemented at this time.

@@ -9,9 +9,9 @@ Here the processes that comprise our work are described.
 
 To interpret these processes and our work in context, please first consult the following processes.
 
-## Modeling the information
+## Modelling the information
 
-![](../assets/images/process/modeling-the-information.drawio.svg){: .d-block .mx-auto .my-5 }
+![](../assets/images/process/modelling-the-information.drawio.svg){: .d-block .mx-auto .my-5 }
 
 ## Exchanging the data
 

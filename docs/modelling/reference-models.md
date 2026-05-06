@@ -1,5 +1,5 @@
 ---
-parent: Modeling
+parent: Modelling
 title: Reference models
 nav_order: 2
 ---

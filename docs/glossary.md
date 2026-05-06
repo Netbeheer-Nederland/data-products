@@ -7,5 +7,5 @@ nav_order: 2
 
 <dl>
   <dt id="information-model">Information model</dt><dd>Specification of semantics and constraints of the use case represented by the data product, including documentation and supporting artifacts.</dd>
-  <dt>Documentation</dt><dd>Documentation which enables or supports the (data) modeling of data products.</dd>
+  <dt>Documentation</dt><dd>Documentation which enables or supports the (data) modelling of data products.</dd>
 </dl>
