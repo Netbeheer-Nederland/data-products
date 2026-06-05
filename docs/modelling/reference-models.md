@@ -15,5 +15,5 @@ nav_order: 2
 * **[CGMES](https://modellen.netbeheernederland.nl/cgmes)**
   <br>Energy management system application program interface (EMS-API) - Part 600-1: Common Grid Model Exchange Standard (CGMES) - Structure and rules.
   
-* **[DCTERMS](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)**
-  <br>specifications of all metadata terms maintained by the Dublin Core Metadata Initiative.
+* **[DCMI Metadata Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)**
+  <br>Specification of all metadata terms maintained by the Dublin Core Metadata Initiative.
